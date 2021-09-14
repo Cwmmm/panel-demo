@@ -1,6 +1,6 @@
 <template>
   <div class="demo">
-    <panel :panelData="formData"></panel>
+    <panel :panelData="formData" :rules="rules"></panel>
   </div>
 </template>
 
@@ -12,6 +12,41 @@ export default {
   },
   data() {
     return {
+      rules: {
+        activityName: [
+          { required: true, message: "请输入活动名称", trigger: "blur" },
+          { min: 3, max: 5, message: "长度在 3 到 5 个字符", trigger: "blur" },
+        ],
+        activityArea: [
+          { required: true, message: "请选择活动区域", trigger: "change" },
+        ],
+        activeTime: [
+          { required: true, message: "请选择活动时间", trigger: "change" },
+        ],
+        activityType: [
+          {
+            required: true,
+            message: "请至少选择一个活动性质",
+            trigger: "change",
+          },
+        ],
+        speResource: [
+          { required: true, message: "请活动性质", trigger: "change" },
+        ],
+        activityForm: [
+          {
+            required: true,
+            message: "请输入活动形式",
+            trigger: "blur",
+          },
+          {
+            min: 50,
+            max: 150,
+            message: "请输入50-150字之间的活动形式",
+            trigger: "blur",
+          },
+        ],
+      },
       formData: [
         [
           {
@@ -50,6 +85,7 @@ export default {
             type: "dataPicker",
             key: "activeTime",
             attrs: {
+              value: [],
               label: "活动时间",
             },
           },
@@ -117,6 +153,7 @@ export default {
             key: "activityForm",
             attrs: {
               type: "textarea",
+              value: "",
               label: "活动形式",
             },
           },

@@ -1,12 +1,13 @@
 <template>
   <div class="panel_container">
-    <el-form v-model="formData">
+    <el-form :model="formData" :rules="rules" ref="panelForm">
       <el-row v-for="(rows, index) in panelData" :key="index">
         <el-col v-for="cols in rows" :key="cols.key" :span="cols.span || 24">
           <template v-if="cols.type === 'input'">
             <cus-input
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
             </cus-input>
@@ -15,6 +16,7 @@
             <cus-select
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
             </cus-select>
@@ -23,6 +25,7 @@
             <cus-radio
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
             </cus-radio>
@@ -31,22 +34,25 @@
             <cus-checkbox
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
             </cus-checkbox>
           </template>
-          <template v-if="cols.type === 'switcher'">
-            <cus-switcher
+          <template v-if="cols.type === 'switc  h'">
+            <cus-switch
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
-            </cus-switcher>
+            </cus-switch>
           </template>
           <template v-if="cols.type === 'dataPicker'">
             <cus-dataPicker
               v-bind="cols.attrs"
               :formKey="cols.key"
+              :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
             </cus-dataPicker>
@@ -54,6 +60,15 @@
         </el-col>
       </el-row>
     </el-form>
+    <el-row :gutter="20">
+      <el-col :span="12" :offset="0">
+        <el-button @click="submitForm" type="primary">提交</el-button>
+      </el-col>
+
+      <el-col :span="12" :offset="0">
+        <el-button @click="resetForm">重置</el-button>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -78,6 +93,15 @@ export default {
       type: Array,
       default: () => {},
     },
+    rules: {
+      type: Object,
+      default: () => {},
+    },
+  },
+  watch: {
+    formData(obj) {
+      console.log(obj);
+    },
   },
   data() {
     return {
@@ -85,16 +109,32 @@ export default {
     };
   },
   methods: {
+    //收集所有子组件的表单变化
     updateFormItem(item) {
-      console.log(item);
+      this.panelData.flat().find((ele) => {
+        if (ele.key == item.key) {
+          ele.attrs.value = item.value;
+          return;
+        }
+      });
       this.formData[item.key] = item.value;
+      console.log(this.formData[item.key]);
     },
-    updateValue(val) {
-      console.log(this);
-      this.oValue = val;
-      this.$emit("updateFormItem", {
-        key: this.formKey,
-        value: val,
+    //验证提交
+    submitForm() {
+      this.$refs.panelForm.validate((valid) => {
+        if (valid) {
+          alert("submit!");
+        } else {
+          return false;
+        }
+      });
+    },
+    //重置数据
+    resetForm() {
+      this.$refs.panelForm.resetFields();
+      Object.keys(this.formData).forEach((key) => {
+        console.log(this.$refs["co" + key][0].updateValue(this.formData[key]));
       });
     },
   },

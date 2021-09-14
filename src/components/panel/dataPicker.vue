@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" label-width="80px">
+  <el-form-item :label="label" label-width="80px" :prop="formKey">
     <el-date-picker
       :value="oValue"
       @input="updateValue"
@@ -16,7 +16,12 @@
 import { panel_mixins } from "./common";
 export default {
   mixins: [panel_mixins],
-  props: {},
+  props: {
+    value: {
+      type: Array,
+      default: () => [],
+    },
+  },
   data() {
     return {};
   },

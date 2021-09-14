@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" size="normal" label-width="80px">
+  <el-form-item :label="label" size="normal" label-width="80px" :prop="formKey">
     <template v-for="(item, index) in opts">
       <el-radio
         :key="index"

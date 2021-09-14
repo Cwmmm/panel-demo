@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" label-width="80px">
+  <el-form-item :label="label" label-width="80px" :prop="formKey">
     <el-checkbox-group :value="oValue" @input="updateValue">
       <template v-for="(item, index) in opts">
         <el-checkbox :key="index" :label="item.id">{{
@@ -25,14 +25,10 @@ export default {
     },
   },
   data() {
-    return {
-      oValue: [],
-    };
+    return {};
   },
   methods: {},
-  created() {
-    console.log(this.value);
-  },
+  created() {},
 };
 </script>
 

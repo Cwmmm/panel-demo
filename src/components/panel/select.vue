@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" label-width="80px">
+  <el-form-item :label="label" label-width="80px" :prop="formKey">
     <el-select
       :value="oValue"
       @input="updateValue"

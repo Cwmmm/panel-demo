@@ -1,14 +1,14 @@
 <template>
-  <div>2142</div>
+  <el-form-item :label="label" size="normal" label-width="80px" :prop="formKey">
+    <el-switch :value="oValue" @input="updateValue"> </el-switch>
+  </el-form-item>
 </template>
 
 <script>
+import { panel_mixins } from "./common";
 export default {
-  props: {
-    value: {
-      type: String,
-    },
-  },
+  mixins: [panel_mixins],
+  props: {},
   methods: {
     change() {},
   },

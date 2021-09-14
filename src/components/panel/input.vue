@@ -1,5 +1,5 @@
 <template>
-  <el-form-item :label="label" label-width="80px">
+  <el-form-item :label="label" label-width="80px" :prop="formKey">
     <el-input :value="oValue" @input="updateValue" :type="type"> </el-input>
   </el-form-item>
 </template>
@@ -12,6 +12,7 @@ export default {
   data() {
     return {};
   },
+
   methods: {},
   created() {},
   mounted() {},

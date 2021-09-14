@@ -18,23 +18,20 @@ export const panel_mixins = {
     },
   },
   data() {
-    return {
-      oValue: null,
-    };
+    return {};
+  },
+  computed: {
+    oValue() {
+      return this.value || "";
+    },
   },
   methods: {
     updateValue(val) {
-      this.oValue = val;
       this.$emit("updateFormItem", {
         key: this.formKey,
         value: val,
       });
     },
   },
-  created() {
-    this.oValue =
-      typeof this.value == "object"
-        ? JSON.parse(JSON.stringify(this.value))
-        : this.value;
-  },
+  created() {},
 };
