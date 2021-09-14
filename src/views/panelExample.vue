@@ -30,7 +30,7 @@ export default {
             span: 12,
             attrs: {
               type: "text",
-              value: "",
+              value: "1",
               label: "活动区域",
               opts: [
                 {
@@ -48,7 +48,7 @@ export default {
         [
           {
             type: "dataPicker",
-            key: "data",
+            key: "activeTime",
             attrs: {
               label: "活动时间",
             },
@@ -69,6 +69,25 @@ export default {
             key: "activityType",
             attrs: {
               label: "活动性质",
+              value: ["1", "2"],
+              opts: [
+                {
+                  id: "1",
+                  label: "美食/餐厅线上活动",
+                },
+                {
+                  id: "2",
+                  label: "地推活动",
+                },
+                {
+                  id: "3",
+                  label: "线下主题活动",
+                },
+                {
+                  id: "4",
+                  label: "单纯品牌曝光",
+                },
+              ],
             },
           },
         ],
@@ -78,6 +97,17 @@ export default {
             key: "speResource",
             attrs: {
               label: "特殊资源",
+              value: "2",
+              opts: [
+                {
+                  id: "1",
+                  label: "线上品牌赞助商",
+                },
+                {
+                  id: "2",
+                  label: "线下场地免费",
+                },
+              ],
             },
           },
         ],
@@ -99,7 +129,7 @@ export default {
 <style lang="less" scoped>
 .demo {
   width: 600px;
-  height: 800px;
+  height: 400px;
   position: fixed;
   top: 50%;
   left: 50%;

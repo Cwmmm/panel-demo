@@ -5,45 +5,16 @@
 </template>
 
 <script>
+import { panel_mixins } from "./common";
 export default {
-  props: {
-    label: {
-      type: String,
-      default: "输入框标题",
-    },
-    type: {
-      type: String,
-      default: "text",
-    },
-    value: {
-      type: String,
-      default: "",
-    },
-    formKey: {
-      type: String,
-      required: true,
-    },
-  },
+  mixins: [panel_mixins],
+  props: {},
   data() {
-    return {
-      oValue: null,
-    };
+    return {};
   },
-  methods: {
-    updateValue(val) {
-      this.oValue = val;
-      this.$emit("updateFormItem", {
-        key: this.formKey,
-        value: val,
-      });
-    },
-  },
-  created() {
-    this.oValue =
-      typeof this.value == "object"
-        ? JSON.parse(JSON.stringify(this.value))
-        : this.value;
-  },
+  methods: {},
+  created() {},
+  mounted() {},
 };
 </script>
 

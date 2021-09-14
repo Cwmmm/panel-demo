@@ -6,7 +6,6 @@
       placeholder="请选择下拉选项"
       clearable
       filterable
-      @change="change"
     >
       <el-option
         v-for="item in opts"
@@ -20,45 +19,20 @@
 </template>
 
 <script>
+import { panel_mixins } from "./common";
 export default {
+  mixins: [panel_mixins],
   props: {
-    formKey: {
-      type: String,
-    },
-    label: {
-      type: String,
-      default: "下拉框标题",
-    },
-    value: {
-      type: String,
-      default: "",
-    },
     opts: {
       type: Array,
       default: () => [],
     },
   },
   data() {
-    return {
-      oValue: "",
-    };
+    return {};
   },
-  methods: {
-    updateValue(val) {
-      this.oValue = val;
-      this.$emit("updateFormItem", {
-        key: this.formKey,
-        value: val,
-      });
-    },
-    change(newVal) {},
-  },
-  created() {
-    this.oValue =
-      typeof this.value == "object"
-        ? JSON.parse(JSON.stringify(this.value))
-        : this.value;
-  },
+  methods: {},
+  created() {},
 };
 </script>
 

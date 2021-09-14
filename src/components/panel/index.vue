@@ -89,6 +89,14 @@ export default {
       console.log(item);
       this.formData[item.key] = item.value;
     },
+    updateValue(val) {
+      console.log(this);
+      this.oValue = val;
+      this.$emit("updateFormItem", {
+        key: this.formKey,
+        value: val,
+      });
+    },
   },
   created() {
     let formArr = this.panelData.flat();

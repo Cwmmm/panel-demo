@@ -1,18 +1,31 @@
 <template>
   <el-form-item :label="label" size="normal" label-width="80px">
-    <el-radio v-model="oValue" label="1234"></el-radio>
+    <template v-for="(item, index) in opts">
+      <el-radio
+        :key="index"
+        :value="oValue"
+        @input="updateValue"
+        :label="item.id"
+        >{{ item.label }}</el-radio
+      >
+    </template>
   </el-form-item>
 </template>
 
 <script>
+import { panel_mixins } from "./common";
 export default {
+  mixins: [panel_mixins],
   props: {
-    label: {
-      type: String,
-      default: "单选框标题",
+    opts: {
+      type: Array,
+      default: () => [],
     },
   },
+  data() {
+    return {};
+  },
+  methods: {},
+  created() {},
 };
 </script>
-
-<style></style>

@@ -1,8 +1,7 @@
 <template>
   <el-form-item :label="label" label-width="80px">
     <el-date-picker
-      v-model="oValue"
-      :valuu="ovalue"
+      :value="oValue"
       @input="updateValue"
       type="daterange"
       range-separator="至"
@@ -14,33 +13,15 @@
 </template>
 
 <script>
+import { panel_mixins } from "./common";
 export default {
-  props: {
-    value: {
-      type: String,
-    },
-    label: {
-      type: String,
-      default: "日期选择",
-    },
-  },
+  mixins: [panel_mixins],
+  props: {},
   data() {
-    return {
-      oValue: "",
-    };
+    return {};
   },
-  methods: {
-    updateValue(val) {
-      this.oValue = val;
-      this.$emit("updateFormItem", {
-        key: this.formKey,
-        value: val,
-      });
-    },
-  },
-  created() {
-    this.oValue = this.value;
-  },
+  methods: {},
+  created() {},
 };
 </script>
 
