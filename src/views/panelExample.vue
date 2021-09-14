@@ -47,14 +47,23 @@ export default {
           },
         ],
       },
+      //element栅格布局
+      //行数据
       formData: [
+        //列数据
         [
           {
+            //表单对应的keyname
             key: "activityName",
+            //组件类型:input select datePicker radio单选 swith开关 checkbox多选
             type: "input",
+            //栅格栏数:总数24
             span: 12,
+            //子组件prop
             attrs: {
+              //类型
               type: "text",
+              //表单对应的value
               value: "",
               label: "活动名称",
             },

@@ -48,14 +48,14 @@
             >
             </cus-switch>
           </template>
-          <template v-if="cols.type === 'dataPicker'">
-            <cus-dataPicker
+          <template v-if="cols.type === 'datePicker'">
+            <cus-datePicker
               v-bind="cols.attrs"
               :formKey="cols.key"
               :ref="'co' + cols.key"
               @updateFormItem="updateFormItem"
             >
-            </cus-dataPicker>
+            </cus-datePicker>
           </template>
         </el-col>
       </el-row>
@@ -78,7 +78,7 @@ import select from "./select.vue";
 import radio from "./radio.vue";
 import checkbox from "./checkbox.vue";
 import switcher from "./switch.vue";
-import dataPicker from "./dataPicker.vue";
+import datePicker from "./datePicker.vue";
 export default {
   components: {
     "cus-input": input,
@@ -86,7 +86,7 @@ export default {
     "cus-radio": radio,
     "cus-checkbox": checkbox,
     "cus-switch": switcher,
-    "cus-dataPicker": dataPicker,
+    "cus-datePicker": datePicker,
   },
   props: {
     panelData: {
