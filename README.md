@@ -8,6 +8,10 @@
 
 panel: "@/components/panel/index"
 
+## 演示地址
+
+@/views/panelExample
+
 ## 参数
 
 ### formData
@@ -38,3 +42,7 @@ panel: "@/components/panel/index"
 ### rules
 
     验证规则,对应el-form的rules
+
+### subUrl
+
+    表单提交地址

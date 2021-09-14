@@ -97,6 +97,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    subUrl: {
+      type: String,
+      default: "/",
+    },
   },
   watch: {
     formData(obj) {
@@ -124,6 +128,7 @@ export default {
     submitForm() {
       this.$refs.panelForm.validate((valid) => {
         if (valid) {
+          // 提交表单
           alert("submit!");
         } else {
           return false;
